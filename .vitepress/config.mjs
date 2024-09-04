@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/vitepress-doc/",
   title: 'wpf 的在线文档',
   description: '在线文档',
   head: [['link', { rel: 'icon', href: '/images/index/logo.svg' }]],
