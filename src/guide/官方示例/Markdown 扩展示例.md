@@ -1,6 +1,6 @@
 # Markdown 扩展示例
 
-本页展示了VitePress提供的部分内置Markdown扩展功能。
+本页展示了VitePress提供的部分内置 Markdown 扩展功能。
 
 ## 语法高亮显示
 
@@ -188,11 +188,10 @@ VitePress <Badge type="danger" text="caution" />
 
 **输出**
 
-* VitePress <Badge type="info" text="default" />
-* VitePress <Badge type="tip" text="^1.9.0" />
-* VitePress <Badge type="warning" text="beta" />
-* VitePress <Badge type="danger" text="caution" />
-*
+VitePress <Badge type="info" text="default" />
+VitePress <Badge type="tip" text="^1.9.0" />
+VitePress <Badge type="warning" text="beta" />
+VitePress <Badge type="danger" text="caution" />
 
 ## 更多
 

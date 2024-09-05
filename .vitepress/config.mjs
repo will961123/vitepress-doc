@@ -1,6 +1,10 @@
-import { defineConfig } from 'vitepress'
-import { generateSidebar } from 'vitepress-sidebar'
-import { resolve } from 'path'
+import { defineConfig } from 'vitepress';
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin
+} from 'vitepress-plugin-group-icons';
+import { resolve } from 'path';
+import sidebar from './sidebar.js'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -9,20 +13,26 @@ export default defineConfig({
   lang: 'zh-CN',
   base: '/vitepress-doc/',
   srcDir: 'src',
+  head: [['link', { rel: 'icon', href: 'images/index/logo.svg' }]],
+  lastUpdated: true,
   vite: {
     resolve: {
       alias: {
         '@': resolve(__dirname, '../src')
       }
-    }
-  },
-  head: [
-    [
-      'link',
-      { rel: 'icon', href: 'images/index/logo.svg' }
+    },
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          sh: 'logos:bash-icon',
+          js: 'logos:javascript',
+          ts: 'logos:typescript-icon',
+          md: 'logos:markdown',
+          css: 'logos:css-3'
+        }
+      })
     ]
-  ],
-  lastUpdated: true,
+  },
   markdown: {
     image: {
       lazyLoading: true
@@ -34,7 +44,17 @@ export default defineConfig({
       dangerLabel: '危险',
       detailsLabel: '详细信息'
     },
-    lineNumbers: true
+    lineNumbers: true,
+    // 组件插入h1标题下
+    config: md => {
+      md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
+        let htmlResult = slf.renderToken(tokens, idx, options);
+        if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`;
+        return htmlResult;
+      };
+
+      md.use(groupIconMdPlugin);
+    }
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -61,17 +81,13 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: '文档', link: '/官方示例/Markdown 扩展示例' }
+      { text: '文章', link: '/blog' },
+      { text: '指南', link: '/guide' }
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/will961123/vitepress-doc' }
     ],
-    sidebar: {
-      '/': generateSidebar({
-        documentRootPath: '/src',
-        collapsed: false
-      })
-    },
+    sidebar,
     sidebarMenuLabel: '目录',
     outline: {
       label: '文章大纲',
@@ -79,7 +95,8 @@ export default defineConfig({
     },
     returnToTopLabel: '返回顶部',
     editLink: {
-      pattern: 'https://github.com/will961123/vitepress-doc/edit/main/src/:path',
+      pattern:
+        'https://github.com/will961123/vitepress-doc/edit/main/src/:path',
       text: '在GitHub编辑本页'
     },
     lastUpdated: {
@@ -99,4 +116,4 @@ export default defineConfig({
       copyright: 'Released under the MIT License. Copyright© 2024 wpf'
     }
   }
-})
+});

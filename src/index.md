@@ -11,11 +11,11 @@ hero:
     alt: 背景图
   actions:
     - theme: brand
-      text: Markdown 扩展示例
-      link: /官方示例/Markdown 扩展示例
+      text: 技术文章
+      link: /blog
     - theme: alt
-      text: 运行时 API 示例
-      link: /官方示例/运行时 API 示例
+      text: 搭建指南
+      link: /guide
 
 features:
   - icon: 💡

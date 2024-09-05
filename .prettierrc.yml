@@ -1,0 +1,22 @@
+# yaml格式，其它格式：https://prettier.io/docs/en/configuration.html
+semi: true
+# 用单引号代替双引号
+singleQuote: true
+# >不单独在下一行
+jsxBracketSameLine: true
+# 缩进vue文件中脚本和样式
+vueIndentScriptAndStyle: false
+# 换行符
+endOfLine: lf
+# tab 1个默认两个空格
+tabWidth: 2
+# 使用空格作为缩进
+useTabs: false
+# 打印宽度
+printWidth: 80
+# 尾逗号:none没有逗号
+trailingComma: none
+# 对象前后空格：默认true
+bracketSpacing: true
+# 箭头函数尽可能不增加（）,多参数的时候必须添加
+arrowParens: avoid
