@@ -2,7 +2,7 @@
  * @Author: wupf wupf@bjhzwq.com
  * @Date: 2024-09-05 15:12:05
  * @LastEditors: wupf wupf@bjhzwq.com
- * @LastEditTime: 2024-09-05 15:52:05
+ * @LastEditTime: 2024-09-05 16:56:04
  * @FilePath: src/components/toc.vue
  * @Description: 文章目录
  -->
@@ -14,7 +14,7 @@ import { useData } from 'vitepress';
 export default defineComponent({
   setup() {
     const { theme, page } = useData();
-    const path = page.value?.filePath?.replace(/\.md$/, '');
+    const path = page.value?.filePath?.replace(/\/index\.md$/, '');
     const sidebar = theme.value?.sidebar;
     const toc = sidebar[`/${path}`];
 

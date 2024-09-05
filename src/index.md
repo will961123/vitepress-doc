@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: 技术文章
-      link: /blog
+      link: /blog/
     - theme: alt
       text: 搭建指南
-      link: /guide
+      link: /guide/
 
 features:
   - icon: 💡

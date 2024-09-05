@@ -4,7 +4,7 @@ import {
   groupIconVitePlugin
 } from 'vitepress-plugin-group-icons';
 import { resolve } from 'path';
-import sidebar from './sidebar.js'
+import sidebar from './sidebar.js';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -70,6 +70,7 @@ export default defineConfig({
           modal: {
             noResultsText: '未找到结果',
             resetButtonTitle: '清除查询条件',
+            displayDetails: '切换详细信息',
             footer: {
               selectText: '选择',
               navigateText: '切换',
@@ -81,9 +82,12 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: '文章', link: '/blog' },
-      { text: '指南', link: '/guide' }
+      { text: '文章', link: '/blog/' },
+      { text: '指南', link: '/guide/' }
     ],
+    lightModeSwitchTitle: '切换至亮色模式',
+    darkModeSwitchTitle: '切换至深色模式',
+    darkModeSwitchLabel: '切换明暗模式',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/will961123/vitepress-doc' }
     ],

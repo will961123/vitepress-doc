@@ -2,7 +2,7 @@
  * @Author: wupf wupf@bjhzwq.com
  * @Date: 2024-09-05 09:40:23
  * @LastEditors: wupf wupf@bjhzwq.com
- * @LastEditTime: 2024-09-05 10:21:53
+ * @LastEditTime: 2024-09-05 16:56:47
  * @FilePath: src/components/article-metadata.vue
  * @Description: 字数及阅读时间
  -->
@@ -11,6 +11,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useData } from 'vitepress';
 
 const { page } = useData();
+const filePath = page.value?.filePath;
 const lastUpdated = computed(() => new Date(page.value.lastUpdated));
 const wordCount = ref(0);
 const imageCount = ref(0);
@@ -59,13 +60,19 @@ function analyze() {
   wordCount.value = countWord(words);
 }
 
+const ignorePath = ['blog/index.md', 'guide/index.md'];
+const isIgnore = ignorePath.includes(filePath);
+
 onMounted(() => {
+  if (isIgnore) {
+    return;
+  }
   analyze();
 });
 </script>
 
 <template>
-  <p class="word">
+  <p :class="{ 'is-ignore': isIgnore }" class="word">
     <span>
       <svg
         class="icon"
@@ -134,6 +141,10 @@ onMounted(() => {
 .word {
   color: var(--vp-c-text-2);
   font-size: 15px;
+
+  &.is-ignore {
+    display: none;
+  }
 
   svg {
     fill: currentColor;
