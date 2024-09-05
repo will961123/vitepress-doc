@@ -1,5 +1,6 @@
 ---
 outline: false
+lastUpdated: false
 ---
 
 # 指南
